@@ -10,6 +10,26 @@
 // Static Variables
 // ------------------------------------------------
 
+static const std::map<E_C_STATEMENT, std::string> _statements
+{
+	{ E_C_STATEMENT::IF,		"if" },
+	{ E_C_STATEMENT::ELSE,		"else" },
+
+	{ E_C_STATEMENT::SWITCH,	"switch" },
+	{ E_C_STATEMENT::CASE,		"case" },
+	{ E_C_STATEMENT::BREAK,		"break" },
+	{ E_C_STATEMENT::DEFAULT,	"default" },
+
+	{ E_C_STATEMENT::DO,		"do" },
+	{ E_C_STATEMENT::WHILE,		"while" },
+
+	{ E_C_STATEMENT::FOR,		"for" },
+
+	{ E_C_STATEMENT::CONTINUE,	"continue" },
+
+	{ E_C_STATEMENT::GOTO,		"goto" }
+};
+
 static const std::map<E_C_QUALIFIER, std::string> _qualifiers
 {
 	{ E_C_QUALIFIER::CONST,		"const" },
@@ -112,6 +132,32 @@ static const std::map<E_C_TYPE, std::string> _types
 
 // ------------------------------------------------
 // Function Implementations
+// ------------------------------------------------
+
+std::string E_C_STATEMENT_to_Str(const E_C_STATEMENT & statement)
+{
+	for (auto const & s : _statements)
+	{
+		if (s.first == statement) { return s.second; }
+	}
+
+	return "";
+}
+
+// ------------------------------------------------
+// ------------------------------------------------
+
+E_C_STATEMENT Str_to_E_C_STATEMENT(const std::string & statement)
+{
+	for (auto const& s : _statements)
+	{
+		if (s.second == statement) { return s.first; }
+	}
+
+	return E_C_STATEMENT::NONE;
+}
+
+// ------------------------------------------------
 // ------------------------------------------------
 
 std::string E_C_TYPE_to_Str(const E_C_TYPE & type)
