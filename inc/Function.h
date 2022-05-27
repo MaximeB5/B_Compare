@@ -34,7 +34,7 @@ class Function : public Data
 
 	public:
 		Function() = delete;
-		Function(const std::string & signature, const std::vector<std::string> & comment_block, const std::vector<std::string> & function_content);
+		Function(const std::string & signature, const std::vector<std::string> & function_content, const std::vector<std::string> & comment_block);
 		virtual ~Function() = default;
 
 		std::string to_Str(void) const override;
