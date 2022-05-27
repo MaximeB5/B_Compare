@@ -10,7 +10,12 @@
 // Debug & Tests
 // ------------------------------------------------
 
+// Uncomment the following define if you need it for some tests
+//#define DEBUG
+
 #ifdef DEBUG
+	#include "Function_Parameter.h"
+	#include "Function.h"
 	#include <iostream>
 #endif // DEBUG
 
@@ -20,7 +25,7 @@
 
 int main()
 {
-	
+
 	File_Reader reader_1{"test.c"};
 	File_Reader reader_2{"test.c"};
 
@@ -29,6 +34,6 @@ int main()
 
 	reader_1.read_file();
 	reader_2.read_file();
-	
+
 	return EXIT_SUCCESS;
 }
