@@ -6,6 +6,8 @@
 #include "Helper_Functions.h"
 
 #include <stdexcept>
+#include <algorithm>
+#include <iostream>
 
 // ------------------------------------------------
 // Class Implementation
@@ -15,7 +17,9 @@
 /// Constructor
 /// </summary>
 /// <param name="const std::string & signature"></param>
-Function::Function(const std::string & signature, const std::vector<std::string> & comment_block, const std::vector<std::string> & function_content)
+/// <param name="const std::vector<std::string> & function_content"></param>
+/// <param name="const std::vector<std::string> & comment_block"></param>
+Function::Function(const std::string & signature, const std::vector<std::string> & function_content, const std::vector<std::string> & comment_block)
 	:	Data(signature), _comment_block(comment_block), _function_content(function_content)
 {
 	// First part of the function's signature is defined by the first occurence of '('. It contains the following :
@@ -58,6 +62,36 @@ Function::Function(const std::string & signature, const std::vector<std::string>
 	}
 
 	_returned_value_type = returned_value;
+
+	// What's now left of the signature's function is/are the parameter(s) of the function
+	// They're representated by what's inside the parenthesis
+	// The open parenthesis position is known from the steps above
+	// The closing parenthesis is the last character of the signature string
+	// The string inside both parenthesis can be parsed on the ',' to define the different parameters
+	
+	std::string inside_parenthesis	= signature.substr(pos_open_parenthesis + 1, signature.find_last_of(')'));
+	size_t number_of_comma			= std::count(inside_parenthesis.begin(), inside_parenthesis.end(), ',');
+
+	// '+ 1' allows to handle the last parameter, or the only one in the case where there is no comma
+	for (unsigned int i{ 0 }; i != number_of_comma + 1 ; ++i)
+	{
+		// Delete all leading spaces and tabs
+		inside_parenthesis.erase(0, inside_parenthesis.find_first_not_of(" \t"));
+
+		std::size_t pos_comma = inside_parenthesis.find_first_of(',');
+
+		if (pos_comma == std::string::npos)
+		{
+			// Push back the last parameter OR the only one
+			_parameters.push_back(Function_Parameter(inside_parenthesis.substr(0, inside_parenthesis.find(')'))));
+			break;
+		}
+		else
+		{
+			_parameters.push_back(Function_Parameter( inside_parenthesis.substr(0, pos_comma) ));
+			inside_parenthesis = inside_parenthesis.substr(pos_comma + 1);
+		}
+	}
 }
 
 // ------------------------------------------------
