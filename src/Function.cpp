@@ -40,7 +40,7 @@ Function::Function(const std::string & signature, const std::vector<std::string>
 	// ------------------------------------------------
 	// (3)
 	// ------------------------------------------------
-	std::size_t pos_space_before_name = signature.find_last_of(" ");
+	std::size_t pos_space_before_name = first_part.find_last_of(" ");
 	
 	if (pos_space_before_name == std::string::npos) { throw std::runtime_error("Error 002 when analyzing Function '" + signature + "'"); }
 	
