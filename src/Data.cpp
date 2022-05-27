@@ -4,6 +4,8 @@
 
 #include "Data.h"
 
+#include <utility>
+
 // ------------------------------------------------
 // Class Implementation
 // ------------------------------------------------
@@ -21,12 +23,25 @@ Data::Data(std::string content)
 // ------------------------------------------------
 
 /// <summary>
-/// Copy constructor
+/// Copy Constructor
 /// </summary>
 /// <param name="const Data & data"></param>
 Data::Data(const Data & data)
 {
 	_data_content = data._data_content;
+}
+
+// ------------------------------------------------
+// ------------------------------------------------
+
+/// <summary>
+/// Returns the content of the Data instance
+/// </summary>
+/// <param name=""></param>
+/// <returns></returns>
+std::string Data::data_to_Str(void) const
+{
+	return _data_content;
 }
 
 // ------------------------------------------------
