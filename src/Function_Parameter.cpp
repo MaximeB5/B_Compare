@@ -21,8 +21,17 @@ Function_Parameter::Function_Parameter(const std::string & content)
 {
 	std::size_t pos = content.find_last_of(" ");
 
-	_parameter_type.set_type(content.substr(0, pos));
-	_parameter_name = content.substr(pos + 1);
+	if (pos == std::string::npos)
+	{
+		// Case where we'd have void
+		_parameter_type.set_type("void");
+		_parameter_name = "";
+	}
+	else
+	{
+		_parameter_type.set_type(content.substr(0, pos));
+		_parameter_name = content.substr(pos + 1);
+	}
 }
 
 // ------------------------------------------------
