@@ -3,6 +3,7 @@
 // ------------------------------------------------
 
 #include "C_Qualifier.h"
+#include "Helper_Functions.h"
 
 // ------------------------------------------------
 // Class Implementation
@@ -13,7 +14,7 @@
 /// </summary>
 /// <param name="E_C_QUALIFIER qualifier"></param>
 C_Qualifier::C_Qualifier(E_C_QUALIFIER qualifier)
-	: C_Keyword(""), _qualifier(qualifier)
+	: C_Keyword(E_C_QUALIFIER_to_Str(qualifier)), _qualifier(qualifier)
 {
 }
 
