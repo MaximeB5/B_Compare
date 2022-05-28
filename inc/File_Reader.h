@@ -29,7 +29,7 @@ class File_Reader
 
 		void read_file(void) noexcept;
 
-		inline bool is_ready_to_read(void) const { return _file_stream.is_open(); }
+		inline bool is_ready_to_read(void) const noexcept { return _file_stream.is_open() && _file_stream.good(); }
 };
 
 #endif // __FILE_READER_H__
