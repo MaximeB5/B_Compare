@@ -21,8 +21,8 @@ class Data
 		Data(const Data & data);
 		virtual ~Data() = default;
 
-		std::string data_to_Str(void) const;
-		virtual std::string to_Str(void) const;
+		std::string data_to_Str(void) const noexcept;
+		virtual std::string to_Str(void) const noexcept;
 };
 
 #endif // __DATA_H__
