@@ -3,7 +3,6 @@
 // ------------------------------------------------
 
 #include "C_Type.h"
-#include "Helper_Functions.h"
 
 // ------------------------------------------------
 // Class Implementation
@@ -29,11 +28,6 @@ C_Type::C_Type(const C_Type & type)
 	: C_Keyword(type._data_content)
 {
 	_type = type._type;
-}
-
-std::string C_Type::to_Str(void) const
-{
-	return _data_content;
 }
 
 // ------------------------------------------------
