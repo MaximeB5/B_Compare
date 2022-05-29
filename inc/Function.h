@@ -37,18 +37,18 @@ class Function : public Data
 		Function(const std::string & signature, const std::vector<std::string> & function_content, const std::vector<std::string> & comment_block);
 		virtual ~Function() = default;
 
-		std::string to_Str(void) const override;
+		inline std::string to_Str(void) const noexcept override { return _name; }
 
 		// ------------------------------------------------
 		// Inline Getters
 		// ------------------------------------------------
-		inline std::vector<std::string>					get_comment_block(void)				const noexcept	{ return _comment_block; }
-		inline bool										get_is_static(void)					const noexcept	{ return _is_static; }
-		inline bool										get_is_returned_value_const(void)	const noexcept	{ return _is_returned_value_const; }
-		inline std::string								get_returned_value_type(void)		const noexcept	{ return _returned_value_type; }
-		inline std::string								get_name(void)						const noexcept	{ return _name; }
-		inline std::vector<Function_Parameter>			get_parameters(void)				const noexcept	{ return _parameters; }
-		inline std::vector<std::string>					get_function_content(void)			const noexcept	{ return _function_content; }
+		inline auto get_comment_block(void)				const noexcept	{ return _comment_block; }
+		inline auto get_is_static(void)					const noexcept	{ return _is_static; }
+		inline auto get_is_returned_value_const(void)	const noexcept	{ return _is_returned_value_const; }
+		inline auto get_returned_value_type(void)		const noexcept	{ return _returned_value_type; }
+		inline auto get_name(void)						const noexcept	{ return _name; }
+		inline auto get_parameters(void)				const noexcept	{ return _parameters; }
+		inline auto get_function_content(void)			const noexcept	{ return _function_content; }
 };
 
 #endif // __FUNCTION_H__
