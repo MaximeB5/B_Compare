@@ -3,7 +3,6 @@
 // ------------------------------------------------
 
 #include "C_Qualifier.h"
-#include "Helper_Functions.h"
 
 // ------------------------------------------------
 // Class Implementation
@@ -29,11 +28,6 @@ C_Qualifier::C_Qualifier(const C_Qualifier & c_qualifier)
 	: C_Keyword(c_qualifier._data_content)
 {
 	_qualifier = c_qualifier._qualifier;
-}
-
-std::string C_Qualifier::to_Str(void) const
-{
-	return _data_content;
 }
 
 // ------------------------------------------------
