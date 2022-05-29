@@ -36,11 +36,3 @@ Function_Parameter::Function_Parameter(const std::string & content)
 
 // ------------------------------------------------
 // ------------------------------------------------
-
-std::string Function_Parameter::to_Str(void) const
-{
-	return std::string(_parameter_type.get_type() + " " + _parameter_name);
-}
-
-// ------------------------------------------------
-// ------------------------------------------------
