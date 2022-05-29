@@ -20,7 +20,7 @@ class C_Keyword : public Data
 		C_Keyword(const std::string & content) : Data(content) {}
 		virtual ~C_Keyword() = default;
 
-		std::string to_Str(void) const override = 0;
+		std::string to_Str(void) const noexcept override = 0;
 };
 
 #endif // __C_KEYWORD_H__
