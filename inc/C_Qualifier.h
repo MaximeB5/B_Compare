@@ -7,6 +7,7 @@
 
 #include "C_Keyword.h"
 #include "E_C_Keywords.h"
+#include "Helper_Functions.h"
 
 // ------------------------------------------------
 // Class Definition
@@ -22,7 +23,7 @@ class C_Qualifier : public C_Keyword
 		C_Qualifier(const C_Qualifier & c_qualifier);
 		virtual ~C_Qualifier() = default;
 
-		std::string to_Str(void) const override;
+		inline std::string to_Str(void) const noexcept override { return E_C_QUALIFIER_to_Str(_qualifier); }
 };
 
 #endif // __C_QUALIFIER_H__
