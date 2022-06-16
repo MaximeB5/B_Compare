@@ -57,7 +57,7 @@ Function::Function(const std::string & signature, const std::vector<std::string>
 
 	if (_is_static)
 	{
-		// Remove the static qualifier from the string  'static ' located at the beginning of the string (!) THIS IS MANDATORY (!)
+		// Remove the static qualifier from the string  'static ' located at the beginning of the string (!) THIS LOCATION IS MANDATORY (!)
 		returned_value.erase(0, 7);
 	}
 
